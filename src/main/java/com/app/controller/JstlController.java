@@ -49,7 +49,7 @@ public class JstlController {
 		return "Jstl/jstl2";
 	}
 
-	@GetMapping("/jstl/listTest")
+	@GetMapping("/Jstl/listTest/member")
 	public String listTest(@RequestParam String type, Model model) {
 
 		model.addAttribute("type", type);
@@ -77,6 +77,6 @@ public class JstlController {
 		model.addAttribute("memberList", memberList);
 	
 
-		return "Jstl/listTest";
+		return "Jstl/listTest/member";
 	}
 }
