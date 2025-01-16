@@ -18,7 +18,7 @@ public class Quiz07Controller {
 			model.addAttribute("accessUrl", "/first");
 		} else { // firsthide2를 거쳐서 옴
 			//model.addAttribute("accessUrl", "/firsthide2");
-			model.addAttribute("accessUrl", session.getAttribute("accessUrl")) //세션에서 바로 가져와 세팅
+			model.addAttribute("accessUrl", session.getAttribute("accessUrl")); //세션에서 바로 가져와 세팅
 			session.removeAttribute("accessUrl"); // 사용 후 제거
 		}
 		
