@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>pathA 화면-2</h1>
+pathCommon/A
 </body>
 </html>

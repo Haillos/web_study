@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<H1>save-cookie</H1>
+	<h1>save-cookie</h1>
 </body>
 </html>

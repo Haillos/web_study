@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>pathB-2</h1>
+pathCommon/B
 </body>
 </html>
