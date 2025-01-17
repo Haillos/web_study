@@ -15,6 +15,24 @@ public class RoomServiceImpl implements RoomService {
 	@Autowired
 	RoomDAO roomDAO;
 	
+	
+	//set을 통한 주입
+	
+	/*
+	public void setRoomDAO(RoomDAO roomDAO) {
+		this.roomDAO = roomDAO;
+	}
+	*/
+	
+	//생성자
+	
+	/*
+	public RoomServiceImpl(RoomDAO roomDAO) {
+		this.roomDAO = roomDAO;
+	}
+	
+	*/
+	
 	@Override
 	public List<Room> findRoomList() {
 		

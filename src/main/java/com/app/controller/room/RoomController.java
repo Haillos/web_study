@@ -22,6 +22,8 @@ public class RoomController {
 		
 		//호실 정보! 준비
 		List<Room> roomList = roomService.findRoomList();
+		Room r = new Room();
+		r.setRoomId(0);
 		
 		//화면에 전달
 		model.addAttribute("roomList", roomList);
