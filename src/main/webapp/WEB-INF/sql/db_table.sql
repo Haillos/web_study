@@ -1,0 +1,13 @@
+CREATE TABLE table_name
+room_id NUMBER  PRIMARY KEY,
+building_number VARCHAR(32) NOT NULL,
+room_number NUMBER(6) NOT NULL,
+fllor NUMBER(4),
+max_guest_count NUMBER(6) NOT NULL,
+view_type VARCHAR2(8) NOT NULL
+);
+
+CREATE SEQUENCE SEQ_T_ROOM_PK
+START WITH 1
+INCREMNET BY 1
+NOCYCLE;
