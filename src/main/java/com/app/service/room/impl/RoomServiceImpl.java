@@ -41,4 +41,13 @@ public class RoomServiceImpl implements RoomService {
 		return roomList;
 	}
 
+
+	@Override
+	public int saveRoom(Room room) {
+		// TODO Auto-generated method stub
+		
+		int result = roomDAO.saveRoom(room);
+		return result;
+	}
+
 }
