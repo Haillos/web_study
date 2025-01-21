@@ -2,13 +2,17 @@ package com.app.controller.admin;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.app.dto.room.Room;
+import com.app.dto.user.User;
 import com.app.service.room.RoomService;
 import com.app.service.user.UserService;
 
@@ -57,7 +61,84 @@ public class AdminController {
 		return "admin/rooms";
 	}
 	
+	//관리자 특정 객실에 대한 정보 (상세페이지)
+	
+	//
+	//    /admin/roomInfo?roodId=2
+	//    /admin/roomInfo?roodId=1
+	//    /admin/roomInfo?roodId=40
+	//@GetMapping("/admin/roomInfo")  
+
+	//  /admin/room/2
+	//  /admin/room/50
+	//  /admin/room/99
+	@GetMapping("/admin/room/{roomId}")
+	public String room(@PathVariable String roomId, Model model) {
+		
+		int roomIdInt = Integer.parseInt(roomId);
+		
+		Room room = roomService.findRoomByRoomId(roomIdInt);
+		model.addAttribute("room", room);
+		
+		return "admin/room";
+	}
+	
+	
+	//객실 정보 삭제
+	@GetMapping("/admin/removeRoom")
+	public String removeRoom(HttpServletRequest request) {
+		String roomId = request.getParameter("roomId");
+		
+		int roomIdInt = Integer.parseInt(roomId);
+		
+		int result = roomService.removeRoom(roomIdInt);
+		
+		return "redirect:/admin/rooms";
+//		if(result > 0) {
+//			
+//		} else {
+//			
+//		}
+	}
+	
 	
 	
 	//고객 관리/등록
+	
+	@GetMapping("/admin/users/add")
+	public String addUser() {
+		
+		return "admin/addUser";
+	}
+	
+	@PostMapping("/admin/users/add")
+	public String addUserAction(User user) {
+		//사용자 추가 (관리자X)
+		
+		user.setUserType("CUS");
+		int result = userService.saveUser(user);
+		//int result = userService.saveCustomerUser(user);
+		System.out.println("사용자 추가 처리 결과 : " + result);
+		
+		if(result > 0) {
+			return "redirect:/admin/users";
+		} else {
+			return "admin/addUser";			
+		}
+	}
+	
+	@GetMapping("/admin/users")
+	public String users(Model model) {
+		
+		List<User> userList = userService.findUserList();
+		
+		model.addAttribute("userList", userList);
+		
+		return "admin/users";
+		
+	}
+	
+	
+	
+	
 }

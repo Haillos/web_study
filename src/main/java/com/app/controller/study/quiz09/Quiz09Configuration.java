@@ -1,9 +1,9 @@
 package com.app.controller.study.quiz09;
 
-import java.awt.PageAttributes;
-
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
+@Configuration
 public class Quiz09Configuration {
 
 	@Bean
@@ -14,12 +14,11 @@ public class Quiz09Configuration {
 		
 		return coffeeBean;
 	}
- 	
+	
 	@Bean
 	public CupBean cupBean(CoffeeBean coffeeBean) {
 		return new CupBean(coffeeBean);
 	}
-	
 	
 	@Bean
 	public DessertBean dessertBean() {
@@ -28,10 +27,11 @@ public class Quiz09Configuration {
 		return dessertBean;
 	}
 	
-	@Bean 
+	@Bean
 	PlateBean plateBean(DessertBean dessertBean) {
 		PlateBean plateBean = new PlateBean();
 		plateBean.setDessertBean(dessertBean);
 		return plateBean;
 	}
+	
 }

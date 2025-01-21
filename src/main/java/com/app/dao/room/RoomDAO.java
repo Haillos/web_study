@@ -7,5 +7,9 @@ import com.app.dto.room.Room;
 public interface RoomDAO {
 	List<Room> findRoomList();
 	
-	public int saveRoom(Room room);
+	int saveRoom(Room room);
+	
+	Room findRoomByRoomId(int roomId);
+	
+	int removeRoom(int roomId);
 }

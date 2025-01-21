@@ -15,7 +15,7 @@ public class Quiz08Controller {
 	public String login() {
 		
 		
-		return "quiz/session/login"; 
+		return "quiz/quiz08/login"; 
 	}
 	
 	@PostMapping("/quiz/session/login")
@@ -28,7 +28,7 @@ public class Quiz08Controller {
 		
 		//로그인 성공 이라고 간주!
 		//session.setAttribute("isLogin", true);
-		session.setAttribute("id", id); //A B
+		session.setAttribute("loginId", id); //A B
 		session.setAttribute("count", 0);
 		
 		// 로그인 후 -> 내가 쓴 게시글
@@ -41,7 +41,7 @@ public class Quiz08Controller {
 	public String count(HttpSession session, Model model) {
 		
 		//로그인 한 상태면? count 증가
-		if(session.getAttribute("id") != null) {
+		if(session.getAttribute("loginId") != null) {
 			//count 값 증가
 			session.setAttribute("count", ((Integer)session.getAttribute("count")) + 1 );
 		} else {
@@ -64,4 +64,3 @@ public class Quiz08Controller {
 		return "redirect:/quiz/session/count";
 	}
 }
-

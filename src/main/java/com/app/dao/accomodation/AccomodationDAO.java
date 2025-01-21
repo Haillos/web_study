@@ -1,4 +1,4 @@
-package com.app.dao.acoomodation;
+package com.app.dao.accomodation;
 
 public interface AccomodationDAO {
 

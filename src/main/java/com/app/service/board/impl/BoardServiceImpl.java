@@ -1,4 +1,4 @@
-package com.app.service.service.impl;
+package com.app.service.board.impl;
 
 import com.app.service.board.BoardService;
 

@@ -7,7 +7,7 @@ import com.app.service.user.UserService;
 
 @Controller
 public class CustomerController {
-
+	
 	@Autowired
 	UserService userService;
 }
