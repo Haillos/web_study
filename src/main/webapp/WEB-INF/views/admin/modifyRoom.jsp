@@ -16,16 +16,16 @@
 	
 		<label>건물/동 번호<input type="text" name="buildingNumber" value="${room.buildingNumber}"></label><br>
 		<label>호실번호<input type="text" name="roomNumber" value="${room.roomNumber}"></label><br>
-		<label>층수<input type="text" name="floor" value="${room.floor}"></label><br> <label>최대숙박인원<input
-			type="text" name="maxGuestCount" value="${room.maxGuestCount}"></label><br>
+		<label>층수<input type="text" name="floor" value="${room.floor}"></label><br> 
+		<label>최대숙박인원<input type="text" name="maxGuestCount" value="${room.maxGuestCount}"></label><br>
 
 		<h4>뷰타입</h4>
-		<select name="viewType" value="${room.viewType}">
-			<option value="OCN" <c:if test="${room.viewType == 'OCN'}">selected</c:if>>오션뷰</option>
+		<select name="viewType" >
+			<option value="OCN" <c:if test="${room.viewType == 'OCN'}">selected</c:if>   >오션뷰</option>
 			<option value="CTY" <c:if test="${room.viewType == 'CTY'}">selected</c:if>>시티뷰</option>
 			<option value="MOT" <c:if test="${room.viewType == 'MOT'}">selected</c:if>>마운틴뷰</option>
 		</select> <br>
-		<button type="submit">객실추가</button>
+		<button type="submit">수정하기</button>
 		<button type="button" onClick="location.href='/admin/rooms'">객실
 			목록보기</button>
 	</form>
