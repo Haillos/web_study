@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 import com.app.common.CommonCode;
 import com.app.dao.user.UserDAO;
 import com.app.dto.user.User;
+import com.app.dto.user.UserProfileImage;
 import com.app.dto.user.UserSearchCondition;
 import com.app.service.user.UserService;
+import com.app.validator.UserCustomValidator;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -39,6 +41,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public int saveAdminUser(User user) {
+		
 		//관리자 추가 전 검증 로직
 		user.setUserType(CommonCode.USER_USERTYPE_ADMIN);
 		int result = userDAO.saveUser(user);
@@ -135,6 +138,24 @@ public class UserServiceImpl implements UserService {
 		} else { //해당 아이디와 동일한 객체가 있다 -> 중복O
 			return true;
 		}
+	}
+
+
+	@Override
+	public int saveUserProfileImage(UserProfileImage userProfileImage) {
+		
+		int result = userDAO.saveUserProfileImage(userProfileImage);
+		
+		return result;
+	}
+
+
+	@Override
+	public UserProfileImage findUserProfileImageById(String id) {
+		
+		UserProfileImage userProfileImage = userDAO.findUserProfileImageById(id);
+		
+		return userProfileImage;
 	}
 
 }
