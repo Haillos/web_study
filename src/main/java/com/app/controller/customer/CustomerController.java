@@ -1,6 +1,7 @@
 package com.app.controller.customer;
 
 import java.io.File;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -38,6 +39,7 @@ import com.app.service.file.FileService;
 import com.app.service.user.UserService;
 import com.app.util.FileManager;
 import com.app.util.LoginManager;
+import com.app.util.SHA256Encryptor;
 import com.app.validator.UserCustomValidator;
 import com.app.validator.UserValidator;
 
@@ -101,6 +103,16 @@ public class CustomerController {
 		//saveUser(user객체);
 		
 		user.setUserType( CommonCode.USER_USERTYPE_CUSTOMER );
+		String encPw;
+		try {
+			encPw = SHA256Encryptor.encrypt(user.getPw());
+			user.setPw(encPw);
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			//잘못됐다 안내 -> 페이지 전환
+		}
+	
 		int result = userService.saveUser(user); //DB 에 user정보 저장 (가입)
 		
 		System.out.println("회원가입 처리 결과 : " + result);
@@ -195,6 +207,15 @@ public class CustomerController {
 		
 		//user 로그인 할 수 있게 정보가 들어있는지! 확인!
 		user.setUserType( CommonCode.USER_USERTYPE_CUSTOMER );
+		
+		try {
+			user.setPw(SHA256Encryptor.encrypt(user.getPw()));
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			//잘못됐다 안내 -> 페이지 전환
+		}
+		
 		User loginUser = userService.checkUserLogin(user);
 		
 		if(loginUser == null) { // 아이디X? 아이디O&비번X  null
